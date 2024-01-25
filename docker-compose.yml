@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  # mariadb:
+  #   image: mariadb:11.2
+  #   volumes:
+  #     - mariadb_data:/var/lib/mysql
+  #   environment:
+  #     - MARIADB_RANDOM_ROOT_PASSWORD=yes
+  #     - MARIADB_DATABASE=playground
+  #     - MARIADB_USER=dbuser
+  #     - MARIADB_PASSWORD=12345
+
+  mysqlserver:
+    build: ./build/mysqlserver
+    volumes:
+      - mysqlserver_data:/var/lib/mysql
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Default12345678
+      - MSSQL_PID=Developer
+
+  dbeaver:
+    image: dbeaver/cloudbeaver:23.3
+    ports:
+      - 8080:8978
+    volumes:
+      - dbeaver_data:/opt/cloudbeaver/workspace
+
+volumes:
+  mysqlserver_data:
+  dbeaver_data:
