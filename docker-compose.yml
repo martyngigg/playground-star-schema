@@ -14,7 +14,9 @@ services:
   mysqlserver:
     build: ./build/mysqlserver
     volumes:
-      - mysqlserver_data:/var/lib/mysql
+      - mysqlserver_data:/var/opt/mssql
+    ports:
+      - 8433:1433
     environment:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=Default12345678
