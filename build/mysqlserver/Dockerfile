@@ -8,7 +8,8 @@ RUN apt-get update && \
 # Create a backup directory and download backup files
 RUN mkdir -p /backup
 WORKDIR /backup
-RUN curl -L -O https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2017.bak
+RUN curl -L -O https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2017.bak && \
+  curl -L -O https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorksDW2017.bak
 
 # Create a config directory
 RUN mkdir -p /usr/config
